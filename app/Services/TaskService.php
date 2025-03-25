@@ -22,6 +22,13 @@ class TaskService
         return Task::create($data);
     }
 
+    public function updateTask(Task $task, array $data)
+    {
+        if ($task->user_id === Auth::id()) {
+            $task->update($data);
+        }
+    }
+
     public function deleteTask(Task $task)
     {
         if ($task->user_id === Auth::id()) {
