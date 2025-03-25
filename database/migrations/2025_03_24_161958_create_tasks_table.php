@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->text('description')->nullable();
             $table->enum('priority', ['low', 'medium', 'high']);
             $table->enum('status', ['to-do', 'in-progress', 'done']);
+            $table->string('public_token')->nullable()->unique();
+            $table->timestamp('public_token_expires_at')->nullable();
             $table->date('due_date');
             $table->timestamps();
         });
