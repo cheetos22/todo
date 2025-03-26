@@ -1,11 +1,13 @@
 <?php
 
-use Illuminate\Foundation\Inspiring;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Schedule;
+declare(strict_types=1);
+
 use App\Jobs\SendTaskReminder;
 use App\Models\Task;
 use Carbon\Carbon;
+use Illuminate\Foundation\Inspiring;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schedule;
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
@@ -17,4 +19,3 @@ Schedule::call(function () {
         dispatch(new SendTaskReminder($task));
     }
 })->dailyAt('00:00')->name('Task Expiration Reminder');
-

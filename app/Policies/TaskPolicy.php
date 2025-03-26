@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
 use App\Models\Task;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
-class TaskPolicy
+final class TaskPolicy
 {
     /**
      * Determine whether the user can update the model.
