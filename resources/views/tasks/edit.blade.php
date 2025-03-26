@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="container mx-auto max-w-4xl py-12 px-6 bg-white shadow-md rounded-lg">
+    <div class="container mx-auto max-w-4xl py-12 mt-12 px-6 bg-white shadow-md rounded-lg">
         <h2 class="text-xl font-semibold">{{ __('Edit TodoList') }}</h2>
 
         @if($task->public_token && $task->public_token_expires_at > now())
