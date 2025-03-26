@@ -6,7 +6,7 @@ use App\Http\Requests\TaskRequest;
 use App\Models\Task;
 use App\Services\TaskService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 class TaskController extends Controller
@@ -26,13 +26,13 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
-
+        Gate::authorize('update', $task);
         return view('tasks.edit', compact('task'));
     }
 
     public function update(TaskRequest $request, Task $task)
     {
-
+        Gate::authorize('update', $task);
         $this->taskService->updateTask($task, $request->validated());
         return redirect()->route('tasks.index');
     }
@@ -45,15 +45,13 @@ class TaskController extends Controller
 
     public function destroy(Task $task)
     {
-        if ($task->user_id === Auth::id()) {
-            $this->taskService->deleteTask($task);
-        }
+        Gate::authorize('delete', $task);
         return redirect()->route('tasks.index');
     }
 
     public function generatePublicLink(Task $task)
     {
-
+        Gate::authorize('generatePublicLink', $task);
         if ($task->public_token && $task->public_token_expires_at > now()) {
             return back()->with('public_link', route('tasks.public', ['token' => $task->public_token]));
         }
