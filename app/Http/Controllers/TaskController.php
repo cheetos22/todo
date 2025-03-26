@@ -54,6 +54,7 @@ final class TaskController extends Controller
     public function destroy(Task $task): RedirectResponse
     {
         Gate::authorize('delete', $task);
+        $this->taskService->deleteTask($task);
 
         return redirect()->route('tasks.index');
     }
