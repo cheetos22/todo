@@ -34,7 +34,7 @@
 
 *Niestety nie udało mi się ruszyć zadań opcjonalnych, miałem tylko 4h wolnego czasu przez 3 dni*.
 *Na pewno bym wyniusł metody odpowiedzialne za generowanie i wyświetlanie publicznych linków gdzieś do osobnego serwisu*.
-*Można by było się pokosuć też o napisanie prostych testów i dodać testy architektoniczne z pest'a*.
+*Można by było się pokosuć też o napisanie prostych testów i dodać testy architektoniczne dla laravela*.
 
 
 
