@@ -35,4 +35,6 @@ Po wykonaniu tych kroków aplikacja będzie dostępna na lokalnym serwerze.
 
 Przejdź pod lokalny adres serwera (np. `http://localhost:8000`), zarejestruj nowe konto (byle jakie), a następnie przejdź do zakładki **ToDo List**.
 
+Dodaj zadanie do listy ToDo.
+
 W edycji zadania znajdziesz przycisk umożliwiający generowanie publicznych linków. Wygenerowany link będzie ważny tylko przez 1 minutę.
