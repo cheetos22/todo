@@ -24,7 +24,7 @@ final class SendTaskReminder implements ShouldQueue
         $this->task = $task;
     }
 
-    public function handle()
+    public function handle() : void
     {
         Mail::to($this->task->user->email)->send(new TaskReminderMail($this->task));
     }

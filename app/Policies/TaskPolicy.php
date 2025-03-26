@@ -28,12 +28,12 @@ final class TaskPolicy
     /**
      * Determine whether the user can generate public link.
      */
-    public function generatePublicLink(User $user, Task $task)
+    public function generatePublicLink(User $user, Task $task): bool
     {
         return $this->isOwner($user, $task);
     }
 
-    private function isOwner(User $user, Task $task)
+    private function isOwner(User $user, Task $task) : bool
     {
         return $user->id === $task->user_id;
     }
