@@ -26,6 +26,9 @@
             @csrf
             @method('PUT')
             <input type="text" name="name" value="{{ $task->name }}" required class="w-full border border-gray-300 rounded-md p-3 mb-4">
+            @error('name')
+                <div class=" pb-4 text-cyan-500">{{ $message }}</div>
+            @enderror
             <textarea name="description" class="w-full border border-gray-300 rounded-md p-3 mb-4">{{ $task->description }}</textarea>
 
             <div class="flex space-x-4 mb-4">
@@ -34,12 +37,21 @@
                     <option value="medium" {{ $task->priority == 'medium' ? 'selected' : '' }}>Medium</option>
                     <option value="high" {{ $task->priority == 'high' ? 'selected' : '' }}>High</option>
                 </select>
+                @error('priority')
+                    <div class=" pb-4 text-cyan-500">{{ $message }}</div>
+                @enderror
                 <select name="status" class="w-1/3 border border-gray-300 rounded-md p-3">
                     <option value="to-do" {{ $task->status == 'to-do' ? 'selected' : '' }}>To-Do</option>
                     <option value="in-progress" {{ $task->status == 'in-progress' ? 'selected' : '' }}>In Progress</option>
                     <option value="done" {{ $task->status == 'done' ? 'selected' : '' }}>Done</option>
                 </select>
+                @error('status')
+                    <div class=" pb-4 text-cyan-500">{{ $message }}</div>
+                @enderror
                 <input type="date" name="due_date" value="{{ $task->due_date }}" required class="w-1/3 border border-gray-300 rounded-md p-3">
+                @error('due_date')
+                    <div class=" pb-4 text-cyan-500">{{ $message }}</div>
+                @enderror
             </div>
 
             <button type="submit" class="w-full bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600">
