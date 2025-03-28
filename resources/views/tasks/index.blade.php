@@ -40,7 +40,11 @@
             <tbody>
                 @foreach ($tasks as $task)
                     <tr class="border-t border-gray-300">
-                        <td class="p-4">{{ $task->name }}</td>
+                        <td class="p-4">
+                            <a href="{{ route('tasks.show', $task) }}" class="text-blue-500">
+                                {{ $task->short_name }}
+                            </a>
+                        </td>
                         <td class="p-4">{{ ucfirst($task->priority) }}</td>
                         <td class="p-4">{{ ucfirst(str_replace('-', ' ', $task->status)) }}</td>
                         <td class="p-4">{{ $task->due_date }}</td>

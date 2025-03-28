@@ -10,6 +10,14 @@ use App\Models\User;
 final class TaskPolicy
 {
     /**
+     * Determine whether the user can show.
+     */
+    public function view(User $user, Task $task): bool
+    {
+        return $this->isOwner($user, $task);
+    }
+
+    /**
      * Determine whether the user can update the model.
      */
     public function update(User $user, Task $task): bool
@@ -33,7 +41,7 @@ final class TaskPolicy
         return $this->isOwner($user, $task);
     }
 
-    private function isOwner(User $user, Task $task) : bool
+    private function isOwner(User $user, Task $task): bool
     {
         return $user->id === $task->user_id;
     }

@@ -29,6 +29,13 @@ final class TaskController extends Controller
         return view('tasks.index', compact('tasks'));
     }
 
+    public function show(Task $task)
+    {
+        Gate::authorize('view', $task);
+
+        return view('tasks.show', compact('task'));
+    }
+
     public function edit(Task $task): View
     {
         Gate::authorize('update', $task);
@@ -41,7 +48,7 @@ final class TaskController extends Controller
         Gate::authorize('update', $task);
         $this->taskService->updateTask($task, $request->validated());
 
-        return redirect()->route('tasks.index');
+        return redirect()->route('tasks.show', $task->id);
     }
 
     public function store(TaskRequest $request): RedirectResponse
@@ -73,7 +80,7 @@ final class TaskController extends Controller
         return back()->with('public_link', route('tasks.public', ['token' => $task->public_token]));
     }
 
-    public function showPublic($token) :  View
+    public function showPublic($token): View
     {
         $task = Task::where('public_token', $token)->first();
 

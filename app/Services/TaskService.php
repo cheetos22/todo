@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 final class TaskService
 {
-    public function getTasks(array $filters = []) : Collection
+    public function getTasks(array $filters = []): Collection
     {
         return Task::where('user_id', Auth::id())
             ->when(isset($filters['priority']), fn ($q) => $q->where('priority', $filters['priority']))
@@ -19,7 +19,7 @@ final class TaskService
             ->get();
     }
 
-    public function createTask(array $data) : Task
+    public function createTask(array $data): Task
     {
         $data['user_id'] = Auth::id();
 

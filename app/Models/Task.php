@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 final class Task extends Model
 {
@@ -20,5 +21,15 @@ final class Task extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getShortNameAttribute()
+    {
+        return Str::limit($this->attributes['name'], 20);
+    }
+
+    public function getShortDescriptionAttribute()
+    {
+        return Str::limit($this->attributes['description'], 10);
     }
 }

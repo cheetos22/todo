@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
     Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
     Route::post('/tasks/{task}/share', [TaskController::class, 'generatePublicLink'])->name('tasks.share');
+    Route::get('/tasks/{task}', [TaskController::class, 'show'])->name('tasks.show');
 });
 
 require __DIR__.'/auth.php';
